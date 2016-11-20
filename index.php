@@ -33,10 +33,10 @@ $APPLICATION->SetTitle("Интернет-магазин \"Одежда\"");
 	".default", 
 	array(
 		"IBLOCK_TYPE_ID" => "catalog",
-		"IBLOCK_ID" => "2",
+		"IBLOCK_ID" => "8",
 		"BASKET_URL" => "/personal/cart/",
 		"COMPONENT_TEMPLATE" => ".default",
-		"IBLOCK_TYPE" => "catalog",
+		"IBLOCK_TYPE" => "offers",
 		"SECTION_ID" => $_REQUEST["SECTION_ID"],
 		"SECTION_CODE" => "",
 		"SECTION_USER_FIELDS" => array(
@@ -62,10 +62,11 @@ $APPLICATION->SetTitle("Интернет-магазин \"Одежда\"");
 			1 => "",
 		),
 		"OFFERS_PROPERTY_CODE" => array(
-			0 => "COLOR_REF",
-			1 => "SIZES_SHOES",
-			2 => "SIZES_CLOTHES",
-			3 => "",
+			0 => "",
+			1 => "COLOR_REF",
+			2 => "SIZES_SHOES",
+			3 => "SIZES_CLOTHES",
+			4 => "",
 		),
 		"OFFERS_SORT_FIELD" => "sort",
 		"OFFERS_SORT_ORDER" => "desc",
@@ -77,8 +78,7 @@ $APPLICATION->SetTitle("Интернет-магазин \"Одежда\"");
 		"ADD_PICT_PROP" => "-",
 		"LABEL_PROP" => "-",
 		"OFFER_ADD_PICT_PROP" => "-",
-		"OFFER_TREE_PROPS" => array(
-		),
+		"OFFER_TREE_PROPS" => "",
 		"PRODUCT_SUBSCRIPTION" => "N",
 		"SHOW_DISCOUNT_PERCENT" => "N",
 		"SHOW_OLD_PRICE" => "Y",
@@ -127,8 +127,7 @@ $APPLICATION->SetTitle("Интернет-магазин \"Одежда\"");
 		"PARTIAL_PRODUCT_PROPERTIES" => "N",
 		"PRODUCT_PROPERTIES" => array(
 		),
-		"OFFERS_CART_PROPERTIES" => array(
-		),
+		"OFFERS_CART_PROPERTIES" => "",
 		"ADD_TO_BASKET_ACTION" => "ADD",
 		"PAGER_TEMPLATE" => "round",
 		"DISPLAY_TOP_PAGER" => "N",
