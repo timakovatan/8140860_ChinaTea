@@ -1974,7 +1974,7 @@ q:after{content:"";}
     height: 17px;
 }
 .threecolumns .subscribe-form .submit{
-    float:right;
+    float:left;
     background: url(images/bg-submit02.png) no-repeat;
     width: 106px;
     height: 25px;
@@ -1989,7 +1989,7 @@ q:after{content:"";}
     margin:0;
     padding:6px 0 0 8px;
     background: url(images/bg-social-box.png) no-repeat;
-    width: 268px;
+    width: 110px;
     height: 39px;
     position:relative;
     overflow:hidden;
