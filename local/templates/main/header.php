@@ -83,36 +83,63 @@
 </div>
 <!-- end header -->
 <!-- start intro-holder -->
-<div id="intro-holder">
-    <div class="intro-box">
-        <div class="roundabout-holder large">
-            <ul id="myRoundabout">
-                <li>
-                    <img src="<?=SITE_TEMPLATE_PATH;?>/images/1.gif" alt="image description" width="100%" />
-                    <div class="image">
-
-                    </div>
-                </li>
-                <li>
-                    <img src="<?=SITE_TEMPLATE_PATH;?>/images/2.gif" alt="image description" width="100%" />
-                    <div class="image">
-
-                    </div>
-                </li>
-                <li>
-                    <img src="<?=SITE_TEMPLATE_PATH;?>/images/3.gif" alt="image description" width="100%" />
-                    <div class="image">
-
-                    </div>
-                </li>
-            </ul>
-            <div class="controls">
-                <a href="#" id="next">Next!</a>
-                <a href="#" id="previous">Previous!</a>
-            </div>
-        </div>
-    </div>
-</div>
+            <?$APPLICATION->IncludeComponent("bitrix:photo.section", "template1", Array(
+	"ADD_SECTIONS_CHAIN" => "N",	// Включать раздел в цепочку навигации
+		"AJAX_MODE" => "N",	// Включить режим AJAX
+		"AJAX_OPTION_ADDITIONAL" => "",	// Дополнительный идентификатор
+		"AJAX_OPTION_HISTORY" => "N",	// Включить эмуляцию навигации браузера
+		"AJAX_OPTION_JUMP" => "N",	// Включить прокрутку к началу компонента
+		"AJAX_OPTION_STYLE" => "Y",	// Включить подгрузку стилей
+		"BROWSER_TITLE" => "-",	// Установить заголовок окна браузера из свойства
+		"CACHE_FILTER" => "N",	// Кешировать при установленном фильтре
+		"CACHE_GROUPS" => "Y",	// Учитывать права доступа
+		"CACHE_TIME" => "36000000",	// Время кеширования (сек.)
+		"CACHE_TYPE" => "A",	// Тип кеширования
+		"DETAIL_URL" => "",	// URL, ведущий на страницу с содержимым элемента раздела
+		"DISPLAY_BOTTOM_PAGER" => "N",	// Выводить под списком
+		"DISPLAY_TOP_PAGER" => "N",	// Выводить над списком
+		"ELEMENT_SORT_FIELD" => "sort",	// По какому полю сортируем фотографии
+		"ELEMENT_SORT_ORDER" => "asc",	// Порядок сортировки фотографий в разделе
+		"FIELD_CODE" => array(	// Поля
+			0 => "ID",
+			1 => "NAME",
+			2 => "SORT",
+			3 => "PREVIEW_PICTURE",
+			4 => "",
+		),
+		"FILTER_NAME" => "arrFilter",	// Имя массива со значениями фильтра для фильтрации элементов
+		"IBLOCK_ID" => "10",	// Инфоблок
+		"IBLOCK_TYPE" => "content",	// Тип инфоблока
+		"LINE_ELEMENT_COUNT" => "3",	// Количество фотографий, выводимых в одной строке таблицы
+		"MESSAGE_404" => "",	// Сообщение для показа (по умолчанию из компонента)
+		"META_DESCRIPTION" => "-",	// Установить описание страницы из свойства
+		"META_KEYWORDS" => "-",	// Установить ключевые слова страницы из свойства
+		"PAGER_BASE_LINK_ENABLE" => "N",	// Включить обработку ссылок
+		"PAGER_DESC_NUMBERING" => "N",	// Использовать обратную навигацию
+		"PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",	// Время кеширования страниц для обратной навигации
+		"PAGER_SHOW_ALL" => "N",	// Показывать ссылку "Все"
+		"PAGER_SHOW_ALWAYS" => "N",	// Выводить всегда
+		"PAGER_TEMPLATE" => ".default",	// Шаблон постраничной навигации
+		"PAGER_TITLE" => "Фотографии",	// Название категорий
+		"PAGE_ELEMENT_COUNT" => "20",	// Количество элементов на странице
+		"PROPERTY_CODE" => array(	// Свойства
+			0 => "URL",
+			1 => "",
+		),
+		"SECTION_CODE" => "",	// Код раздела
+		"SECTION_ID" => $_REQUEST["SECTION_ID"],	// ID раздела
+		"SECTION_URL" => "",	// URL, ведущий на страницу с содержимым раздела
+		"SECTION_USER_FIELDS" => array(	// Свойства раздела
+			0 => "",
+			1 => "",
+		),
+		"SET_LAST_MODIFIED" => "N",	// Устанавливать в заголовках ответа время модификации страницы
+		"SET_STATUS_404" => "N",	// Устанавливать статус 404
+		"SET_TITLE" => "N",	// Устанавливать заголовок страницы
+		"SHOW_404" => "N",	// Показ специальной страницы
+	),
+	false
+);?>
 <!-- end intro-holder -->
 <!-- start promo-box -->
 <div class="promo-wrap">
