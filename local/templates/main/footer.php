@@ -40,6 +40,7 @@
                             <input type="submit" class="submit" value="Subscribe now!" />
                         </fieldset>
                     </form>
+
                     <?$APPLICATION->IncludeComponent("bitrix:news.list", "template2", Array(
 	"ACTIVE_DATE_FORMAT" => "d.m.Y",	// Формат показа даты
 		"ADD_SECTIONS_CHAIN" => "N",	// Включать раздел в цепочку навигации
