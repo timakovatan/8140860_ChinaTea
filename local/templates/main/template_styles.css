@@ -471,7 +471,7 @@ q:after{content:"";}
     float:right;
     background: url(images/btn-take.png) no-repeat;
     width: 250px;
-    height: 35px;
+    height: 27px;
     padding: 9px 0 0 32px;
     font-size:14px;
     color:#1b1f20;
@@ -1996,7 +1996,7 @@ q:after{content:"";}
 }
 .threecolumns .social-list li{
     float:left;
-    width:32px;
+    width: 30px;
     padding-right:6px;
 }
 .threecolumns .social-list a{

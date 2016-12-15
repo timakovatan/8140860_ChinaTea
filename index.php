@@ -3,11 +3,8 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Интернет-магазин \"Одежда\"");
 ?>
 <?if (IsModuleInstalled("advertising")):?>
-<?$APPLICATION->IncludeComponent(
-	"bitrix:advertising.banner",
-	"bootstrap",
-	array(
-		"COMPONENT_TEMPLATE" => "bootstrap",
+<?$APPLICATION->IncludeComponent("bitrix:advertising.banner", "bootstrap", array(
+	"COMPONENT_TEMPLATE" => "bootstrap",
 		"TYPE" => "MAIN",
 		"NOINDEX" => "Y",
 		"QUANTITY" => "3",
@@ -21,9 +18,12 @@ $APPLICATION->SetTitle("Интернет-магазин \"Одежда\"");
 		"BS_HIDE_FOR_TABLETS" => "N",
 		"BS_HIDE_FOR_PHONES" => "Y",
 		"CACHE_TYPE" => "A",
-		"CACHE_TIME" => "36000000",
+		"CACHE_TIME" => "36000000"
 	),
-	false
+	false,
+	array(
+	"ACTIVE_COMPONENT" => "N"
+	)
 );?>
 <?endif?>
 
