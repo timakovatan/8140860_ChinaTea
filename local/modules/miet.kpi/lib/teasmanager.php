@@ -1,5 +1,5 @@
 <?php
-namespace MIET\KPI;
+namespace MIET\TEAS;
 use Bitrix\Main\Application;
 use Bitrix\Main\Entity;
 use Bitrix\Main\Entity\Event;
@@ -7,10 +7,10 @@ use Bitrix\Main\Localization\Loc;
 use Bitrix\Iblock\ElementTable;
 use Bitrix\Main\UserTable;
 Loc::loadMessages(__FILE__);
-class KPIManager {
-    const IBLOCK_CODE_KPI = 'kpi';
+class TEASManager {
+    const IBLOCK_CODE_TEAS = 'teas';
     const IBLOCK_CODE_DEPARTMENTS = 'departments';
-    public static function GetKPI(
+    public static function GetTEAS(
         $arOrder = array('SORT' => 'ASC'),
         $arFilter = array(),
         $arGroupBy = false,
@@ -18,10 +18,10 @@ class KPIManager {
         $arSelectFields = array('ID', 'NAME')
     ) {
         $elements = array();
-        //Получаем ID инфоблока KPI по его символьному коду
+        //Получаем ID инфоблока TEAS по его символьному коду
         $rsIblock = \CIBlock::GetList(
             array(),
-            array('CODE' => self::IBLOCK_CODE_KPI, 'SITE_ID' =>
+            array('CODE' => self::IBLOCK_CODE_TEAS, 'SITE_ID' =>
                 SITE_ID)
         );
         $arIblock = $rsIblock->GetNext();
@@ -44,7 +44,7 @@ class KPIManager {
  }
  return $elements;
  }
-    public static function GetKPIEmployee($idEmployee) {
+    public static function GetTEASEmployee($idEmployee) {
         if(!$idEmployee) {
             return array();
         }
@@ -57,8 +57,8 @@ class KPIManager {
                 'ID' => $idEmployee
             )
         ))->fetch();
-        //Получаем список всех KPI данных подразделений
-        return self::GetKPI(
+        //Получаем список всех TEAS данных подразделений
+        return self::GetTEAS(
             array('NAME' => 'asc'),
             array('PROPERTY_DEPARTMENT.ID' => $arDepartmentsUser),
             false,
@@ -67,10 +67,10 @@ class KPIManager {
                 'PROPERTY_WEIGHT', 'PROPERTY_REGULATIONS')
         );
     }
-    public static function SetKPIEmployee($idEmployee, $period,
-                                          $arKPIValues) {
-        if(!$idEmployee || !is_array($arKPIValues) ||
-            !count($arKPIValues)) {
+    public static function SetTEASEmployee($idEmployee, $period,
+                                          $arTEASValues) {
+        if(!$idEmployee || !is_array($arTEASValues) ||
+            !count($arTEASValues)) {
             return array();
         }
         global $USER;
@@ -79,10 +79,10 @@ class KPIManager {
         //Начинаем транзакцию
         $db->startTransaction();
 
-        foreach($arKPIValues as $KPI => $KPIValue) {
+        foreach($arTEASValues as $TEAS => $TEASValue) {
             $arValue = array(
-                'UF_VALUE' => $KPIValue,
-                'UF_KPI' => $KPI,
+                'UF_VALUE' => $TEASValue,
+                'UF_TEAS' => $TEAS,
                 'UF_EMPLOYEE' => $idEmployee,
                 'UF_CREATED_BY' => $USER->GetID(),
                 'UF_CREATED' => new
@@ -91,12 +91,12 @@ class KPIManager {
                 \Bitrix\Main\Type\DateTime($period. ' 00:00:00')
             );
 
-            $kpi = self::GetKPIEmployeeValue($KPI, $idEmployee, $period );
-            if(isset($kpi["ID"])) {
-                $result = KPIEmployeeTable::update($kpi["ID"], $arValue);
+            $teas = self::GetTEASEmployeeValue($TEAS, $idEmployee, $period );
+            if(isset($TEAS["ID"])) {
+                $result = TEASEmployeeTable::update($teas["ID"], $arValue);
             }
             else {
-                $result = KPIEmployeeTable::add($arValue);
+                $result = TEASEmployeeTable::add($arValue);
             }
 
             if (!$result->isSuccess()) {
@@ -110,13 +110,13 @@ class KPIManager {
         }
     }
 
-    public static function GetKPIEmployeeValue($idKPI, $idEmployee, $period)
+    public static function GetTEASEmployeeValue($idTEAS, $idEmployee, $period)
     {
-        return KPIEmployeeTable::getList(array(
+        return TEASEmployeeTable::getList(array(
             "select" => array("ID", "UF_VALUE"),
             "filter" => array(
                 "UF_EMPLOYEE" => $idEmployee,
-                "UF_KPI" => $idKPI,
+                "UF_TEAS" => $idTEAS,
                 "UF_PERIOD" => \Bitrix\Main\Type\DateTime::createFromUserTime($period)
             )
         ))->fetch();
